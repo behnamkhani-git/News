@@ -46,6 +46,8 @@ dependencies {
     implementation project(":search:search_presentation")
     implementation project(":news:news_presentation")
     implementation project(":common:common_utils")
+    implementation project(":news:news_domain")
+    implementation project(":news:news_data")
 
     // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
     implementation Deps.core

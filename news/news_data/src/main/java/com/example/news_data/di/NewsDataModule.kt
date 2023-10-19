@@ -1,7 +1,7 @@
 package com.example.news_data.di
 
 import com.example.news_data.network.NewsApiService
-import com.example.news_domain.repository.NewsRepoImpl
+import com.example.news_data.repository.NewsRepoImpl
 import com.example.news_domain.repository.NewsRepository
 import dagger.Module
 import dagger.Provides

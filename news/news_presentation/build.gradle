@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+
+    // Adding plugins
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -28,19 +32,39 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     // Adding common module to this module
     implementation project(":common:common_utils")
+    implementation project(":news:news_domain")
 
     // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
     implementation Deps.core
     implementation Deps.appCompat
     implementation Deps.androidMaterial
     implementation Deps.constraintLayout
-
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso
+
+    // These dependencies are used in this module
+    implementation DaggerHilt.hilt
+    kapt DaggerHilt.hiltAndroidCompiler
+    kapt DaggerHilt.hiltCompiler
+
+    implementation(Coroutines.coroutineCore)
+    implementation(Coroutines.coroutineAndroid)
+    implementation(CoroutinesLifecycleScope.lifecycleViewModel)
+    implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
+
+    implementation(Glide.glide)
+    kapt(Glide.annotationProcessor)
+
+    implementation(ViewModelDelegate.viewModelDeligate)
+    implementation(CircularProgressBar.swipeRefresh)
+
 }

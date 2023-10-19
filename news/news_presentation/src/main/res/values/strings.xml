@@ -1,3 +1,4 @@
 <resources>
     <string name="news_activity">News Activity</string>
+    <string name="news_articles">News Articles</string>
 </resources>
