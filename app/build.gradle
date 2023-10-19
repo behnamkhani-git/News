@@ -45,12 +45,14 @@ dependencies {
     // on two other modules: search_presentation and news_presentation.
     implementation project(":search:search_presentation")
     implementation project(":news:news_presentation")
+    implementation project(":common:common_utils")
 
     // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
     implementation Deps.core
     implementation Deps.appCompat
     implementation Deps.androidMaterial
     implementation Deps.constraintLayout
+    implementation 'androidx.navigation:navigation-common-ktx:2.7.4'
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso

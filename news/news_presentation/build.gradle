@@ -31,11 +31,18 @@ android {
 }
 
 dependencies {
-// Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
+    // Adding common module to this module
+    implementation project(":common:common_utils")
+
+    // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
     implementation Deps.core
     implementation Deps.appCompat
     implementation Deps.androidMaterial
     implementation Deps.constraintLayout
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation project(path: ':common:common_utils')
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso
