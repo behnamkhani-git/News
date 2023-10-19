@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    // Adding plugins
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.news'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.news"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding{
+        enabled = true
+    }
+}
+
+dependencies {
+    // Adding search and news module references to the current module.
+    // These lines indicate that the current module (the one containing the build.gradle file) depends
+    // on two other modules: search_presentation and news_presentation.
+    implementation project(":search:search_presentation")
+    implementation project(":news:news_presentation")
+
+    // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
+    implementation Deps.core
+    implementation Deps.appCompat
+    implementation Deps.androidMaterial
+    implementation Deps.constraintLayout
+    testImplementation TestImplementation.junit
+    androidTestImplementation AndroidTestImplementation.junit
+    androidTestImplementation AndroidTestImplementation.espresso
+
+    // These dependencies are only used in the app module
+    implementation LottieAnimations.lottieAnimations
+    implementation DaggerHilt.hilt
+    kapt DaggerHilt.hiltAndroidCompiler
+    kapt DaggerHilt.hiltCompiler
+}
