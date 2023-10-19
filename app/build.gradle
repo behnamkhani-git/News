@@ -52,12 +52,11 @@ dependencies {
     implementation Deps.appCompat
     implementation Deps.androidMaterial
     implementation Deps.constraintLayout
-    implementation 'androidx.navigation:navigation-common-ktx:2.7.4'
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso
 
-    // These dependencies are only used in the app module
+    // These dependencies are used in the app module
     implementation LottieAnimations.lottieAnimations
     implementation DaggerHilt.hilt
     kapt DaggerHilt.hiltAndroidCompiler
