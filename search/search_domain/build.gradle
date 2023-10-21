@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+
+    // Adding plugins
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -31,6 +35,9 @@ android {
 }
 
 dependencies {
+
+    implementation project(":common:common_utils")
+
 // Implementing dependencies by using buildSrc (buildSrc is the central place for all dependencies, build configurations and ...)
     implementation Deps.core
     implementation Deps.appCompat
@@ -39,4 +46,9 @@ dependencies {
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso
+
+    // These dependencies are used in this module
+    implementation DaggerHilt.hilt
+    kapt DaggerHilt.hiltAndroidCompiler
+    kapt DaggerHilt.hiltCompiler
 }
