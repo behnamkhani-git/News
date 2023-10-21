@@ -2,6 +2,7 @@ package com.example.news
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.core.content.ContextCompat
 import com.example.common_utils.Activities
 import com.example.common_utils.Navigator
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        provider.getActivities(Activities.NewsActivity).navigate(this)
+
+        // Wait 2 seconds to show the Splash Screen
+        Handler().postDelayed({
+            provider.getActivities(Activities.NewsActivity).navigate(this)
+            finish()
+        }, 2000)
     }
 }
